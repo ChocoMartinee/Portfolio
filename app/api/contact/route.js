@@ -31,32 +31,32 @@ const generateEmailTemplate = (name, email, userMessage) => `
 `;
 
 // Helper function to send an email via Nodemailer
-async function sendEmail(payload, message) {
-  const { name, email, message: userMessage } = payload;
+// async function sendEmail(payload, message) {
+//   const { name, email, message: userMessage } = payload;
   
-  const mailOptions = {
-    from: process.env.EMAIL_ADDRESS, 
-    to: "Jerson Website", 
-    subject: `New Message From, ${name}`, 
-    text: message, 
-    html: generateEmailTemplate(name, email, userMessage), 
-    replyTo: email, 
-  };
+//   const mailOptions = {
+//     from: "Jerson's Website", 
+//     to: process.env.EMAIL_ADDRESS, 
+//     subject: `New Message From, ${name}`, 
+//     text: message, 
+//     html: generateEmailTemplate(name, email, userMessage), 
+//     replyTo: email, 
+//   };
   
-  try {
-    await transporter.sendMail(mailOptions);
-    return true;
-  } catch (error) {
-    console.error('Error while sending email:', error.message);
-    return false;
-  }
-};
+//   try {
+//     await transporter.sendMail(mailOptions);
+//     return true;
+//   } catch (error) {
+//     console.error('Error while sending email:', error.message);
+//     return false;
+//   }
+// };
 
 // Helper function to send an auto-reply email
 async function sendAutoReplyEmail(email, name) {
   const autoReplyOptions = {
-    from: "Jerson Portfolio",
-    to: process.env.EMAIL_ADDRESS,
+    from: process.env.EMAIL_ADDRESS,
+    to: email,
     subject: "Thank you for reaching out!", 
     text: `Hi ${name},\n\nThank you for contacting me. I have received your message and will get back to you shortly.\n\nBest regards,\nJerson`,
     html: `
@@ -91,19 +91,19 @@ export async function POST(request) {
     const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
 
     // Send email
-    const emailSuccess = await sendEmail(payload, message);
+    //const emailSuccess = await sendEmail(payload, message);
 
     // Send auto-reply email
     if (emailSuccess) {
       await sendAutoReplyEmail(email, name);
     }
 
-    if (emailSuccess) {
-      return NextResponse.json({
-        success: true,
-        message: 'Message and email sent successfully!',
-      }, { status: 200 });
-    }
+    // if (emailSuccess) {
+    //   return NextResponse.json({
+    //     success: true,
+    //     message: 'Message and email sent successfully!',
+    //   }, { status: 200 });
+    // }
 
     return NextResponse.json({
       success: false,
