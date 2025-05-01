@@ -38,6 +38,16 @@ function Certificates() {
       title: 'Python Essentials 1',
       link: 'https://www.netacad.com/certificates?issuanceId=b9e8484a-6212-48db-9c44-00ec9002550f',
     },
+    {
+      image: '/png/Cert-BasicsOfGraphicsDesignUsingCanva.jpg',
+      title: 'Basics Of Graphics Design Using Canva',
+      link: '',
+    },
+    {
+      image: '/png/Cert-BITSCON2024.png',
+      title: 'BITSCON 2024',
+      link: '',
+    }
   ];
 
   return (

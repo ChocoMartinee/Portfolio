@@ -13,7 +13,7 @@ export const experiences = [
   },
   {
     id: 3,
-    title: "Showcased Capstone Project at the 2025 Career Guidance Fair",
+    title: "Cooking Craze Mania, showcased at the 2025 Career Guidance Fair",
     company: "Sorsogon National High School",
     duration: "(March 2025)"
   }

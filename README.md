@@ -6,8 +6,8 @@
 
 # Preview
 
-![](./public/image/screen.png)
+![](./public/png/HomepageCV.png)
 
-## Check it out [here](https://abusaid.netlify.app/).
+## Check it out [here](https://portfolio-jerson.netlify.app/).
 
 ---
