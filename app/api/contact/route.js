@@ -14,21 +14,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Commented out all Telegram-related functionality
-// async function sendTelegramMessage(token, chat_id, message) {
-//   const url = `https://api.telegram.org/bot${token}/sendMessage`;
-//   try {
-//     const res = await axios.post(url, {
-//       text: message,
-//       chat_id,
-//     });
-//     return res.data.ok;
-//   } catch (error) {
-//     console.error('Error sending Telegram message:', error.response?.data || error.message);
-//     return false;
-//   }
-// };
-
 // HTML email template
 const generateEmailTemplate = (name, email, userMessage) => `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
@@ -67,13 +52,13 @@ async function sendEmail(payload, message) {
   }
 };
 
-// Helper function to send an auto-reply email
+// Enhanced logging for debugging auto-reply email issues
 async function sendAutoReplyEmail(email, name) {
   const autoReplyOptions = {
     from: "Jerson Portfolio", 
     to: email, 
     subject: "Thank you for reaching out!", 
-    text: `Hi ${name},\n\nThank you for contacting Me. I have received your message and will get back to you shortly.\n\nBest regards,\nJerson`,
+    text: `Hi ${name},\n\nThank you for contacting me. I have received your message and will get back to you shortly.\n\nBest regards,\nJerson`,
     html: `
       <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
         <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
@@ -87,7 +72,9 @@ async function sendAutoReplyEmail(email, name) {
   };
 
   try {
+    console.log('Attempting to send auto-reply email to:', email);
     await transporter.sendMail(autoReplyOptions);
+    console.log('Auto-reply email sent successfully to:', email);
     return true;
   } catch (error) {
     console.error('Error while sending auto-reply email:', error.message);
