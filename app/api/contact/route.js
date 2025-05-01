@@ -67,32 +67,52 @@ async function sendEmail(payload, message) {
   }
 };
 
+// Helper function to send an auto-reply email
+async function sendAutoReplyEmail(email, name) {
+  const autoReplyOptions = {
+    from: "Jerson Portfolio", 
+    to: email, 
+    subject: "Thank you for reaching out!", 
+    text: `Hi ${name},\n\nThank you for contacting Me. I have received your message and will get back to you shortly.\n\nBest regards,\nJerson`,
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
+        <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: #007BFF;">Thank you for reaching out!</h2>
+          <p>Hi ${name},</p>
+          <p>Thank you for contacting me. I have received your message and will get back to you shortly.</p>
+          <p style="font-size: 12px; color: #888;">This is an automated response. Please do not reply to this email.</p>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(autoReplyOptions);
+    return true;
+  } catch (error) {
+    console.error('Error while sending auto-reply email:', error.message);
+    return false;
+  }
+}
+
+// Updated POST function to include auto-reply
 export async function POST(request) {
   try {
     const payload = await request.json();
     const { name, email, message: userMessage } = payload;
-    // const token = process.env.TELEGRAM_BOT_TOKEN;
-    // const chat_id = process.env.TELEGRAM_CHAT_ID;
-
-    // Validate environment variables
-    // if (!token || !chat_id) {
-    //   return NextResponse.json({
-    //     success: false,
-    //     message: 'Telegram token or chat ID is missing.',
-    //   }, { status: 400 });
-    // }
 
     const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
-
-    // Send Telegram message
-    // const telegramSuccess = await sendTelegramMessage(token, chat_id, message);
 
     // Send email
     const emailSuccess = await sendEmail(payload, message);
 
-    //if (telegramSuccess && emailSuccess) {
+    // Send auto-reply email
     if (emailSuccess) {
-    return NextResponse.json({
+      await sendAutoReplyEmail(email, name);
+    }
+
+    if (emailSuccess) {
+      return NextResponse.json({
         success: true,
         message: 'Message and email sent successfully!',
       }, { status: 200 });
