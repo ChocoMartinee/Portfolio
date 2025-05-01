@@ -4,7 +4,7 @@ export const contactsData = {
     address: 'Sorsogon City, Philippines - 4700',
     github: 'https://github.com/ChocoMartinee',
     facebook: 'https://www.facebook.com/jerson.ebuenga.3',
-    linkedIn: 'https://www.linkedin.com/in/chocomartin/',
+    linkedIn: 'https://www.linkedin.com/in/chocomartin/', 
     twitter: '',
     stackOverflow: '',
     devUsername: ""
