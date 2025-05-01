@@ -35,8 +35,8 @@ async function sendEmail(payload, message) {
   const { name, email, message: userMessage } = payload;
   
   const mailOptions = {
-    from: "Portfolio Website", 
-    to: process.env.EMAIL_ADDRESS, 
+    from: process.env.EMAIL_ADDRESS, 
+    to: "Jerson Website", 
     subject: `New Message From, ${name}`, 
     text: message, 
     html: generateEmailTemplate(name, email, userMessage), 
@@ -52,11 +52,11 @@ async function sendEmail(payload, message) {
   }
 };
 
-// Enhanced logging for debugging auto-reply email issues
+// Helper function to send an auto-reply email
 async function sendAutoReplyEmail(email, name) {
   const autoReplyOptions = {
-    from: "Jerson Portfolio", 
-    to: email, 
+    from: "Jerson Portfolio",
+    to: process.env.EMAIL_ADDRESS,
     subject: "Thank you for reaching out!", 
     text: `Hi ${name},\n\nThank you for contacting me. I have received your message and will get back to you shortly.\n\nBest regards,\nJerson`,
     html: `
