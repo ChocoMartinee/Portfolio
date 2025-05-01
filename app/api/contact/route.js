@@ -67,9 +67,10 @@ async function sendEmail(payload, message) {
 // Helper function to send an auto-reply email
 async function sendAutoReply(name, email) {
   const autoReplyOptions = {
-    from: "Portfolio Website",
+    from: `"Portfolio Website" <${process.env.EMAIL_ADDRESS}>`,
     to: email,
     subject: "Thanks for reaching out!",
+    text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nBest regards,\nJerson`,
     html: generateAutoReplyTemplate(name),
   };
 
