@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import { FaDiscord, FaReddit, FaSteam  } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
@@ -52,20 +53,27 @@ function HeroSection() {
             >
               <FaFacebook size={30} />
             </Link>
-            {/* <Link
-              href={personalData.leetcode}
+            <Link
+              href={personalData.reddit}
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >
-              <SiLeetcode size={30} />
+              <FaReddit size={30} />
             </Link>
             <Link
-              href={personalData.twitter}
+              href={personalData.discord}
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >
-              <FaTwitterSquare size={30} />
-            </Link> */}
+              <FaDiscord size={30} />
+            </Link>
+            <Link
+              href={personalData.steam}
+              target='_blank'
+              className="transition-all text-pink-500 hover:scale-125 duration-300"
+            >
+              <FaSteam size={30} />
+            </Link>
           </div>
 
           <div className="flex items-center gap-3">
