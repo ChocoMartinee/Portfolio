@@ -36,7 +36,7 @@ function ContactForm() {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
+        `/api/contact`,
         userInput
       );
 
@@ -55,7 +55,7 @@ function ContactForm() {
 
   return (
     <div>
-      <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">Contact with me</p>
+      <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">Contact me</p>
       <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
         <p className="text-sm text-[#d3d8e8]">{"If you have any questions or concerns, please don't hesitate to contact me. I am open to any work opportunities that align with my skills and interests."}</p>
         <div className="mt-6 flex flex-col gap-4">
@@ -113,7 +113,7 @@ function ContactForm() {
               disabled={isLoading}
             >
               {
-                isLoading ?
+                isLoading ? 
                 <span>Sending Message...</span>:
                 <span className="flex items-center gap-1">
                   Send Message

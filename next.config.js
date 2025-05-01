@@ -11,16 +11,6 @@ module.exports = {
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },
-      {
-        protocol: 'https',
-        hostname: 'media.dev.to',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'media2.dev.to',
-        pathname: '**',
-      },
     ],
   },
 }
