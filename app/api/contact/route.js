@@ -65,10 +65,10 @@ async function sendEmail(payload, message) {
 };
 
 // Helper function to send an auto-reply email
-async function sendAutoReply(name, userEmail) {
+async function sendAutoReply(name, email) {
   const autoReplyOptions = {
     from: "Portfolio Website",
-    to: userEmail,
+    to: email,
     subject: "Thanks for reaching out!",
     html: generateAutoReplyTemplate(name),
   };
