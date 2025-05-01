@@ -12,7 +12,7 @@
 
 ---
 
-#### Star my repo while your at it?.
+#### Star my repo while your at it?
 
 <div style="display: flex; align-items: center;">
   <img src="./public/png/starMyRepo.png" alt="Star My Repo" width="270" />
