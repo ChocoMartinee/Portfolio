@@ -35,7 +35,7 @@ const generateAutoReplyTemplate = (name) => `
   <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
     <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
       <h2 style="color: #007BFF;">Hi ${name},</h2>
-      <p>Thank you for reaching out! I have received your message and will get back to you as soon as possible.</p>
+      <p>You’ve officially made it to my inbox!  I've received your message and I'm already plotting a response. Hang tight, I'll be in touch soon.</p>
       <p>Best regards,<br>Jerson</p>
     </div>
   </div>
@@ -70,7 +70,7 @@ async function sendAutoReply(name, email) {
     from: `"Portfolio Website" <${process.env.EMAIL_ADDRESS}>`,
     to: email,
     subject: "Thanks for reaching out!",
-    text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nBest regards,\nJerson`,
+    text: `Hi ${name},\n\nYou’ve officially made it to my inbox! I've received your message and I'm already plotting a response. Hang tight, I'll be in touch soon.\n\nBest regards,\nJerson :D`,
     html: generateAutoReplyTemplate(name),
   };
 
