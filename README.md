@@ -6,4 +6,4 @@
 
 ![](./public/png/HomepageCV.png)
 
-## Check out my CV [here](https://portfolio-jerson.netlify.app/).
+## Check out my CV [here](https://jerson-cv.netlify.app/).
